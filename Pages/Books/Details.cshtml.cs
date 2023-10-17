@@ -10,34 +10,35 @@ using Ciurca_Radu_Lab2.Models;
 
 namespace Ciurca_Radu_Lab2.Pages.Books
 {
-    public class DetailsModel : PageModel
-    {
-        private readonly Ciurca_Radu_Lab2.Data.Ciurca_Radu_Lab2Context _context;
-
-        public DetailsModel(Ciurca_Radu_Lab2.Data.Ciurca_Radu_Lab2Context context)
+        public class DetailsModel : PageModel
         {
-            _context = context;
-        }
+            private readonly Ciurca_Radu_Lab2.Data.Ciurca_Radu_Lab2Context _context;
 
-      public Book Book { get; set; } = default!; 
-
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null || _context.Book == null)
+            public DetailsModel(Ciurca_Radu_Lab2.Data.Ciurca_Radu_Lab2Context context)
             {
-                return NotFound();
+                _context = context;
             }
 
-            var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
-            if (book == null)
+            public Book Book { get; set; } = default!;
+
+            public async Task<IActionResult> OnGetAsync(int? id)
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                Book = await _context.Book
+                                     .Include(b => b.Author)
+                                     .Include(b => b.Publisher)
+                                     .FirstOrDefaultAsync(m => m.ID == id);
+
+                if (Book == null)
+                {
+                    return NotFound();
+                }
+
+                return Page();
             }
-            else 
-            {
-                Book = book;
-            }
-            return Page();
         }
     }
-}

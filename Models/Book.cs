@@ -15,6 +15,7 @@ public class Book
     [Column(TypeName = "decimal(6, 2)")]
     public decimal Price { get; set; }
 
+    [Display(Name ="Publishing Date")]
     public DateTime PublishingDate { get; set; }
 
     public int? PublisherID { get; set; }
