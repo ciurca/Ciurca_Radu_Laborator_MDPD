@@ -28,15 +28,19 @@ namespace Ciurca_Radu_Lab2.Pages.Books
                     return NotFound();
                 }
 
-                Book = await _context.Book
+                var book= await _context.Book
                                      .Include(b => b.Author)
                                      .Include(b => b.Publisher)
                                      .FirstOrDefaultAsync(m => m.ID == id);
 
-                if (Book == null)
+                if (book == null)
                 {
                     return NotFound();
                 }
+                else
+                {
+                    Book = book;
+                }    
 
                 return Page();
             }

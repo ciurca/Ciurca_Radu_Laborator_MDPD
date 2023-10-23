@@ -19,7 +19,7 @@ namespace Ciurca_Radu_Lab2.Pages.Books
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet() // Metoda Handler
         {
             ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID",
 "PublisherName");
@@ -33,7 +33,7 @@ namespace Ciurca_Radu_Lab2.Pages.Books
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync() // Metoda Handler
         {
           if (!ModelState.IsValid || _context.Book == null || Book == null)
             {

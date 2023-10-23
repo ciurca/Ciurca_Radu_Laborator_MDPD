@@ -37,7 +37,7 @@ namespace Ciurca_Radu_Lab2.Pages.Books
             if (Book == null)
             {
                 return NotFound();
-            }
+            } 
             return Page();
         }
 
