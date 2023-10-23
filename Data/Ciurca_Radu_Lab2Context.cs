@@ -19,5 +19,9 @@ namespace Ciurca_Radu_Lab2.Data
         public DbSet<Ciurca_Radu_Lab2.Models.Publisher>? Publisher { get; set; }
 
         public DbSet<Ciurca_Radu_Lab2.Models.Author>? Author { get; set; }
+
+        public DbSet<Ciurca_Radu_Lab2.Models.Category>? Category { get; set; }
+
+        public DbSet<Ciurca_Radu_Lab2.Models.BookCategory>? BookCategory { get; set; }
     }
 }
