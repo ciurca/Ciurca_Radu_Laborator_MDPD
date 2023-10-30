@@ -34,9 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].PublishingDate)
             </th>
-            <th colspan="2">
+            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
-                @Html.DisplayNameFor(model => model.Book[0].Author.FullName)
+                @Html.DisplayNameFor(model => model.Book[0].Author)
                 </a>
             </th>
             <th>
