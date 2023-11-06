@@ -27,6 +27,7 @@ namespace Ciurca_Radu_Lab2.Pages.Borrowings
             {
                 Borrowing = await _context.Borrowing
                 .Include(b => b.Book)
+                    .ThenInclude(b=>b.Author)
                 .Include(b => b.Member).ToListAsync();
             }
         }

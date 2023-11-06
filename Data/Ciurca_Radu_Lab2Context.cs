@@ -26,6 +26,9 @@ namespace Ciurca_Radu_Lab2.Data
         public DbSet<Ciurca_Radu_Lab2.Models.BookCategory>? BookCategory { get; set; }
         public DbSet<Ciurca_Radu_Lab2.Models.Borrowing>? Borrowing { get; set; }
         public DbSet<Ciurca_Radu_Lab2.Models.Member>? Member { get; set; }
+
+        // Am definit relatia Book->Borrowing. In acest caz Book e Parent si Borrowing e Child.
+        // Putem avea un Book fara un Borrowing, deoarece nu l-am declarat ca fiind `IsRequired`
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>()
