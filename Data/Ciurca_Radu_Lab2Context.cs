@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Ciurca_Radu_Lab2.Models;
+using System.Reflection.Metadata;
 
 namespace Ciurca_Radu_Lab2.Data
 {
@@ -23,5 +24,14 @@ namespace Ciurca_Radu_Lab2.Data
         public DbSet<Ciurca_Radu_Lab2.Models.Category>? Category { get; set; }
 
         public DbSet<Ciurca_Radu_Lab2.Models.BookCategory>? BookCategory { get; set; }
+        public DbSet<Ciurca_Radu_Lab2.Models.Borrowing>? Borrowing { get; set; }
+        public DbSet<Ciurca_Radu_Lab2.Models.Member>? Member { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>()
+                .HasOne(e => e.Borrowing)
+            .WithOne(e => e.Book)
+                .HasForeignKey<Borrowing>("BookID");
+        }
     }
 }
